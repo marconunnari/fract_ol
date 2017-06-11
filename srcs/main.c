@@ -6,15 +6,15 @@
 /*   By: mnunnari <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/05/23 22:00:10 by mnunnari          #+#    #+#             */
-/*   Updated: 2017/05/26 15:47:37 by mnunnari         ###   ########.fr       */
+/*   Updated: 2017/06/10 19:38:01 by mnunnari         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fractol.h"
 
-void	render(char *filename)
+static void		start(char *fractal)
 {
-	(void)filename;
+	(void)fractal;
 	void			*mlx;
 	void			*win;
 	void			*imageptr;
@@ -27,13 +27,14 @@ void	render(char *filename)
 	drawline(image, (t_point){10, 10, 10}, (t_point){100, 100, 100});
 	mlx_put_image_to_window(mlx, win, imageptr, 0, 0);
 	mlx_key_hook(win, key_handler, NULL);
+	mlx_mouse_hook(win, mouse_handler, NULL);
 	mlx_loop(mlx);
 }
 
-int		main(int argc, char **argv)
+int				main(int argc, char **argv)
 {
 	if (argc != 2)
-		ft_printf("usage: fdf map\n");
+		ft_printf("usage: fdf fractal\n");
 	else
-		render(argv[1]);
+		start(argv[1]);
 }
