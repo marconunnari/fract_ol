@@ -12,7 +12,7 @@ include $(DLIBMLX)/lmlx.mk
 DOBJS= objs
 DSRCS= srcs
 
-SRCS_FILES= main drawline fill_pixel key_handler mouse_handler #new#
+SRCS_FILES= main fill_pixel fill_rect key_handler mouse_handler #new#
 
 SRCS = $(addprefix $(DSRCS)/, $(addsuffix .c, $(SRCS_FILES)))
 OBJS = $(SRCS:$(DSRCS)/%.c=$(DOBJS)/%.o)
